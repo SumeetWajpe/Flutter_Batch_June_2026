@@ -2,6 +2,9 @@ void main() {
   JamesBondCar jbc = JamesBondCar(speed: 300, name: "Aston Martin");
   // print(jbc.name);
   print(jbc.accelerate());
+
+  Employee e = Employee();
+  TennisPlayer tp = TennisPlayer();
 }
 
 class Car {
@@ -23,4 +26,27 @@ class JamesBondCar extends Car {
   String accelerate() {
     return "${super.accelerate()}  Is it armed ? : $isArmed";
   }
+}
+
+// Mixin
+mixin Person {
+  String name = "";
+  double age = 0;
+}
+
+mixin Athelete {
+  bool isFit = true;
+}
+
+class Employee with Person {
+  int empId = 0;
+  double salary = 0;
+}
+
+class Player {
+  String stats = "";
+}
+
+class TennisPlayer extends Player with Person, Athelete {
+  bool isSeeded = false;
 }
