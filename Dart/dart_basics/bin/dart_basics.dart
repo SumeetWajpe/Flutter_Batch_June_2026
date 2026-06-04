@@ -11,6 +11,7 @@ void main(List<String> arguments) {
   s = "Flutter Programming !";
   // s = null; // Errror !
 
+  print("Type of s is ${s.runtimeType}");
   String? str = "Hello"; // Nullable types
   str = null;
 
