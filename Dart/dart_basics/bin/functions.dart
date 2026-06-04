@@ -4,7 +4,8 @@ void main() {
   // data = 200;
   // print(data.toLowerCase()); // crashes at runtime
   // printBook(title: "Wings Of Fire", author: "Dr. APJ Abdul Kalam");
-  printBook("Dr. APJ Abdul Kalam", "Wings Of Fire");
+  // printBook("Dr. APJ Abdul Kalam", "Wings Of Fire");
+  print("The addition is : ${add(x: 20, y: 30)}");
 }
 
 // Basic function
@@ -29,3 +30,12 @@ void main() {
 void printBook(String author, String title, [int numOfPages = 0]) {
   print("$author,$title,$numOfPages");
 }
+
+// Arrow functions / Lambda Functions
+
+// int Add(int x, int y) {
+//   return x + y;
+// }
+// OR
+
+int add({required int x, required int y}) => x + y;
