@@ -39,3 +39,5 @@ void printBook(String author, String title, [int numOfPages = 0]) {
 // OR
 
 int add({required int x, required int y}) => x + y;
+
+void printBookArrow(String author, String title) => print("$author,$title,");
