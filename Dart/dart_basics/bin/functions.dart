@@ -3,8 +3,8 @@ void main() {
   // data = "Hello";
   // data = 200;
   // print(data.toLowerCase()); // crashes at runtime
-  printBook(title: "Wings Of Fire", author: "Dr. APJ Abdul Kalam");
-  // printBook("Dr. APJ Abdul Kalam", "Wings Of Fire");
+  // printBook(title: "Wings Of Fire", author: "Dr. APJ Abdul Kalam");
+  printBook("Dr. APJ Abdul Kalam", "Wings Of Fire");
 }
 
 // Basic function
@@ -18,10 +18,14 @@ void main() {
 // }
 
 // Optional parameters (with default values)
-void printBook({
-  required String author,
-  required String title,
-  int? numOfPages = 0,
-}) {
+// void printBook({
+//   required String author,
+//   required String title,
+//   int? numOfPages = 0,
+// }) {
+//   print("$author,$title,$numOfPages");
+// }
+// Default values for positional Parameters
+void printBook(String author, String title, [int numOfPages = 0]) {
   print("$author,$title,$numOfPages");
 }
