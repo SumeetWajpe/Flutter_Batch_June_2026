@@ -1,7 +1,8 @@
 void main() {
   // Car carObj = Car("MERC", 220);
   Car carObj = Car(speed: 300);
-  print(carObj.name);
+  // print(carObj.name);
+  carObj.accelerate();
 }
 
 class Car {
@@ -26,5 +27,9 @@ class Car {
   // Generative Constructors
   // Car(this.name, this.speed);
   // Car(this.name, [this.speed = 100]);
-  Car({this.name = "BMW", this.speed = 200});  // important
+  Car({this.name = "BMW", this.speed = 200}); // important
+
+  void accelerate() {
+    print("The car $name is running at $speed kmph !");
+  }
 }
