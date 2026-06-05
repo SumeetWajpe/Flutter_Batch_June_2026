@@ -11,6 +11,13 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
+        appBar: AppBar(
+          backgroundColor: Colors.blue,
+          title: Text(
+            "Using Layout Widgets",
+            style: TextStyle(color: Colors.white),
+          ),
+        ),
         // backgroundColor: Colors.teal,
         // body: MyContainer(),
         body: RowsAndColumns(),
