@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hello_flutter_app/container.dart';
 
 void main() {
   runApp(MyApp());
@@ -10,13 +11,14 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       home: Scaffold(
         backgroundColor: Colors.teal,
-        body: Center(
-          child: Text(
-            "Hello Flutter !",
-            textDirection: TextDirection.ltr,
-            style: TextStyle(fontSize: 30),
-          ),
-        ),
+        body: MyContainer(),
+        // body: Center(
+        //   child: Text(
+        //     "Hello Flutter !",
+        //     textDirection: TextDirection.ltr,
+        //     style: TextStyle(fontSize: 30),
+        //   ),
+        // ),
       ),
     );
   }
