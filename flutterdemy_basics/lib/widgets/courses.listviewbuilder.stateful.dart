@@ -76,10 +76,15 @@ class _CoursesListViewBuilderStatefulState
             ),
             trailing: Column(
               children: [
-                const Icon(
-                  Icons.thumb_up_alt_outlined,
-                  size: 25,
-                  color: Color.fromARGB(255, 80, 169, 241),
+                InkWell(
+                  child: const Icon(
+                    Icons.thumb_up_alt_outlined,
+                    size: 25,
+                    color: Color.fromARGB(255, 80, 169, 241),
+                  ),
+                  onTap: () {
+                    print('Tap the potential !');
+                  },
                 ),
                 Text(
                   listofcourses[index].likes.toString(),
