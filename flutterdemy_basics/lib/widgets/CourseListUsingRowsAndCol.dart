@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 class CourseListWithRowsAndCols extends StatelessWidget {
+  const CourseListWithRowsAndCols({super.key});
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
