@@ -11,7 +11,7 @@ class CoursesListViewBuilderStateful extends StatefulWidget {
 
 class _CoursesListViewBuilderStatefulState
     extends State<CoursesListViewBuilderStateful> {
-  final List<CourseModel> listofcourses = [
+  List<CourseModel> listofcourses = [
     CourseModel(
       1,
       "ReactJS",
@@ -83,7 +83,9 @@ class _CoursesListViewBuilderStatefulState
                     color: Color.fromARGB(255, 80, 169, 241),
                   ),
                   onTap: () {
-                    print('Tap the potential !');
+                    setState(() {
+                      listofcourses[index].likes += 1;
+                    });
                   },
                 ),
                 Text(
