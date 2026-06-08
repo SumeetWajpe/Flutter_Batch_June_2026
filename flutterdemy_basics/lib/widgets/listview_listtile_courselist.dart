@@ -46,6 +46,7 @@ class CoursesWithListTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView(
+      padding: const EdgeInsets.all(10.0),
       children: [
         ...listofcourses.map(
           (course) => ListTile(
@@ -63,7 +64,7 @@ class CoursesWithListTile extends StatelessWidget {
             ),
             trailing: const Icon(
               Icons.delete,
-              color: Color.fromARGB(255, 232, 71, 59),
+              color: Color.fromARGB(255, 237, 79, 68),
             ),
           ),
         ),
