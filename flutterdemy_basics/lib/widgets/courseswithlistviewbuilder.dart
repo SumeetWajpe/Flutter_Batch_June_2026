@@ -45,27 +45,32 @@ class CourseListUsingListViewBuilder extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
+      padding: EdgeInsets.all(10),
       itemCount: listofcourses.length,
       itemBuilder: (context, index) {
-        return ListTile(
-          leading: Image(
-            image: NetworkImage(listofcourses[index].imageUrl!),
-            width: 100,
-          ),
-          title: Text(
-            listofcourses[index].title!,
-            style: const TextStyle(
-              fontSize: 20,
-              color: Color.fromARGB(255, 17, 17, 17),
+        return Card(
+          elevation: 15,
+          margin: EdgeInsets.only(bottom: 10),
+          child: ListTile(
+            leading: Image(
+              image: NetworkImage(listofcourses[index].imageUrl!),
+              width: 100,
             ),
-          ),
-          subtitle: Text(
-            listofcourses[index].subtitle!,
-            style: const TextStyle(fontSize: 15, color: Colors.grey),
-          ),
-          trailing: const Icon(
-            Icons.delete,
-            color: Color.fromARGB(255, 237, 79, 68),
+            title: Text(
+              listofcourses[index].title!,
+              style: const TextStyle(
+                fontSize: 20,
+                color: Color.fromARGB(255, 17, 17, 17),
+              ),
+            ),
+            subtitle: Text(
+              listofcourses[index].subtitle!,
+              style: const TextStyle(fontSize: 15, color: Colors.grey),
+            ),
+            trailing: const Icon(
+              Icons.delete,
+              color: Color.fromARGB(255, 237, 79, 68),
+            ),
           ),
         );
       },
