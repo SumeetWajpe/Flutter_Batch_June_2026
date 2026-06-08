@@ -34,10 +34,40 @@ class CoursesWithListTile extends StatelessWidget {
       200,
       "https://cdn-images-1.medium.com/max/1200/1*5-aoK8IBmXve5whBQM90GA.png",
     ),
+    CourseModel(
+      5,
+      "MongoDB",
+      "A document based DB",
+      200,
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT2ZYtHv2OLXmthRPbkmENZRXuqBVDwlsrZ1A&s",
+    ),
   ];
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return ListView(
+      children: [
+        ...listofcourses.map(
+          (course) => ListTile(
+            leading: Image(image: NetworkImage(course.imageUrl!), width: 100),
+            title: Text(
+              course.title!,
+              style: const TextStyle(
+                fontSize: 20,
+                color: Color.fromARGB(255, 17, 17, 17),
+              ),
+            ),
+            subtitle: Text(
+              course.subtitle!,
+              style: const TextStyle(fontSize: 15, color: Colors.grey),
+            ),
+            trailing: const Icon(
+              Icons.delete,
+              color: Color.fromARGB(255, 232, 71, 59),
+            ),
+          ),
+        ),
+      ],
+    );
   }
 }

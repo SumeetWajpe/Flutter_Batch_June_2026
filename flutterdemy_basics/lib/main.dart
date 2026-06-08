@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutterdemy_basics/widgets/CourseListUsingRowsAndCol.dart';
 import 'package:flutterdemy_basics/widgets/basic_listview_courselist.dart';
+import 'package:flutterdemy_basics/widgets/listview_listtile_courselist.dart';
 
 void main() {
   runApp(const MyApp());
@@ -28,7 +29,8 @@ class MyApp extends StatelessWidget {
           ),
         ),
         // body: CourseListWithRowsAndCols(),
-        body: BasicListViewWidgetCourseList(),
+        // body: BasicListViewWidgetCourseList(),
+        body: CoursesWithListTile(),
       ),
     );
   }
