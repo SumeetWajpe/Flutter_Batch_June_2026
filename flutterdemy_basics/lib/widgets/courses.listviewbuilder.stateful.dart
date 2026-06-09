@@ -67,57 +67,62 @@ class _CoursesListViewBuilderStatefulState
       padding: EdgeInsets.all(10),
       itemCount: listofcourses.length,
       itemBuilder: (context, index) {
-        return Card(
-          elevation: 15,
-          margin: EdgeInsets.only(bottom: 10),
-          child: ListTile(
-            leading: Image(
-              image: NetworkImage(listofcourses[index].imageUrl!),
-              width: 100,
-            ),
-            title: Text(
-              listofcourses[index].title!,
-              style: const TextStyle(
-                fontSize: 20,
-                color: Color.fromARGB(255, 17, 17, 17),
+        return GestureDetector(
+          onHorizontalDragEnd: (_) {
+            deleteACourse(index);
+          },
+          child: Card(
+            elevation: 15,
+            margin: EdgeInsets.only(bottom: 10),
+            child: ListTile(
+              leading: Image(
+                image: NetworkImage(listofcourses[index].imageUrl!),
+                width: 100,
               ),
-            ),
-            subtitle: Text(
-              listofcourses[index].subtitle!,
-              style: const TextStyle(fontSize: 15, color: Colors.grey),
-            ),
-            trailing: InkWell(
-              child: const Icon(
-                Icons.delete,
-                color: Color.fromARGB(255, 237, 79, 68),
+              title: Text(
+                listofcourses[index].title!,
+                style: const TextStyle(
+                  fontSize: 20,
+                  color: Color.fromARGB(255, 17, 17, 17),
+                ),
               ),
-              onTap: () {
-                // ??
-                // deleteACourse(listofcourses[index]);
-                deleteACourse(index);
-              },
-            ),
+              subtitle: Text(
+                listofcourses[index].subtitle!,
+                style: const TextStyle(fontSize: 15, color: Colors.grey),
+              ),
+              trailing: InkWell(
+                child: const Icon(
+                  Icons.delete,
+                  color: Color.fromARGB(255, 237, 79, 68),
+                ),
+                onTap: () {
+                  // ??
+                  // deleteACourse(listofcourses[index]);
+                  deleteACourse(index);
+                },
+              ),
 
-            // trailing: Column(
-            //   children: [
-            //     InkWell(
-            //       child: const Icon(
-            //         Icons.thumb_up_alt_outlined,
-            //         size: 25,
-            //         color: Color.fromARGB(255, 80, 169, 241),
-            //       ),
-            //       onTap: () {
-            //         setState(() {
-            //           listofcourses[index].likes += 1;
-            //         });
-            //       },
-            //     ),
-            //     Text(
-            //       listofcourses[index].likes.toString(),
-            //       style: TextStyle(fontSize: 15),
-            //     ),
-            //   ],
-            // ),
+              // trailing: Column(
+              //   children: [
+              //     InkWell(
+              //       child: const Icon(
+              //         Icons.thumb_up_alt_outlined,
+              //         size: 25,
+              //         color: Color.fromARGB(255, 80, 169, 241),
+              //       ),
+              //       onTap: () {
+              //         setState(() {
+              //           listofcourses[index].likes += 1;
+              //         });
+              //       },
+              //     ),
+              //     Text(
+              //       listofcourses[index].likes.toString(),
+              //       style: TextStyle(fontSize: 15),
+              //     ),
+              //   ],
+              // ),
+            ),
           ),
         );
       },
