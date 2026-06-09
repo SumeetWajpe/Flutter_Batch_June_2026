@@ -35,6 +35,8 @@ class _CoursesListViewBuilderStatefulState
           return GestureDetector(
             onHorizontalDragEnd: (_) {
               // deleteACourse(index);
+                    courselistChangeNotifierInstance.deleteACourse(index);
+
             },
             child: Card(
               elevation: 15,
