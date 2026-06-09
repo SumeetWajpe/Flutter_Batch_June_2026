@@ -68,8 +68,8 @@ class _CoursesListViewBuilderStatefulState
                   ),
                   onTap: () {
                     // ??
-                    // deleteACourse(courselistChangeNotifierInstance.listofcourses[index]);
-                    // deleteACourse(index);
+                    // deleteACourse(listofcourses[index]);
+                    courselistChangeNotifierInstance.deleteACourse(index);
                   },
                 ),
 

@@ -43,5 +43,7 @@ class CourseListNotifier extends ChangeNotifier {
   void deleteACourse(int theIndex) {
     // set the app state
     print("Deleting the course (Index) : $theIndex ");
+    listofcourses.removeAt(theIndex);
+    notifyListeners(); // notify listeners about change in state (data)
   }
 }
