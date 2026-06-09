@@ -5,7 +5,7 @@ class CourseListNotifier extends ChangeNotifier {
   final List<CourseModel> listofcourses = [
     CourseModel(
       1,
-      "ReactJS",
+      "React",
       "A JS library",
       100,
       "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/3840px-React-icon.svg.png?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=thumbnail",
