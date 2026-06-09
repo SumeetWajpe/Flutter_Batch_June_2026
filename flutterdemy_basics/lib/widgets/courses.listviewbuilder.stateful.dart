@@ -49,6 +49,12 @@ class _CoursesListViewBuilderStatefulState
     ),
   ];
 
+  void deleteACourse(CourseModel course) {
+    setState(() {
+      listofcourses.removeWhere((theCourse) => course.id == theCourse.id);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
@@ -74,26 +80,37 @@ class _CoursesListViewBuilderStatefulState
               listofcourses[index].subtitle!,
               style: const TextStyle(fontSize: 15, color: Colors.grey),
             ),
-            trailing: Column(
-              children: [
-                InkWell(
-                  child: const Icon(
-                    Icons.thumb_up_alt_outlined,
-                    size: 25,
-                    color: Color.fromARGB(255, 80, 169, 241),
-                  ),
-                  onTap: () {
-                    setState(() {
-                      listofcourses[index].likes += 1;
-                    });
-                  },
-                ),
-                Text(
-                  listofcourses[index].likes.toString(),
-                  style: TextStyle(fontSize: 15),
-                ),
-              ],
+            trailing: InkWell(
+              child: const Icon(
+                Icons.delete,
+                color: Color.fromARGB(255, 237, 79, 68),
+              ),
+              onTap: () {
+                // ??
+                deleteACourse(listofcourses[index]);
+              },
             ),
+
+            // trailing: Column(
+            //   children: [
+            //     InkWell(
+            //       child: const Icon(
+            //         Icons.thumb_up_alt_outlined,
+            //         size: 25,
+            //         color: Color.fromARGB(255, 80, 169, 241),
+            //       ),
+            //       onTap: () {
+            //         setState(() {
+            //           listofcourses[index].likes += 1;
+            //         });
+            //       },
+            //     ),
+            //     Text(
+            //       listofcourses[index].likes.toString(),
+            //       style: TextStyle(fontSize: 15),
+            //     ),
+            //   ],
+            // ),
           ),
         );
       },
