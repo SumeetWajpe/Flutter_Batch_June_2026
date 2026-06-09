@@ -49,9 +49,15 @@ class _CoursesListViewBuilderStatefulState
     ),
   ];
 
-  void deleteACourse(CourseModel course) {
+  // void deleteACourse(CourseModel course) {
+  //   setState(() {
+  //     listofcourses.removeWhere((theCourse) => course.id == theCourse.id);
+  //   });
+  // }
+
+  void deleteACourse(int index) {
     setState(() {
-      listofcourses.removeWhere((theCourse) => course.id == theCourse.id);
+      listofcourses.removeAt(index);
     });
   }
 
@@ -87,7 +93,8 @@ class _CoursesListViewBuilderStatefulState
               ),
               onTap: () {
                 // ??
-                deleteACourse(listofcourses[index]);
+                // deleteACourse(listofcourses[index]);
+                deleteACourse(index);
               },
             ),
 
