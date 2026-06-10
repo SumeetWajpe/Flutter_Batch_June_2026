@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app_go_router_basics/routes/app_router_constants.dart';
 import 'package:go_router/go_router.dart';
 
 class Home extends StatelessWidget {
@@ -13,9 +14,25 @@ class Home extends StatelessWidget {
           Center(child: Text("Home")),
           ElevatedButton(
             onPressed: () {
-              GoRouter.of(context).push(Uri(path: "/about").toString());
+              GoRouter.of(context).push(Uri(path: "/bout").toString());
             },
             child: Text("Go to About"),
+          ),
+          ElevatedButton(
+            onPressed: () {
+              GoRouter.of(
+                context,
+              ).pushNamed(MyAppRouterContants.profileRouteName);
+            },
+            child: Text("Go to Profile"),
+          ),
+          ElevatedButton(
+            onPressed: () {
+              GoRouter.of(
+                context,
+              ).pushNamed(MyAppRouterContants.contactusRouteName);
+            },
+            child: Text("Go to Contact Us"),
           ),
         ],
       ),
