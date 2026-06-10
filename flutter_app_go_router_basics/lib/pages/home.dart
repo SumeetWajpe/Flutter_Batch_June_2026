@@ -14,15 +14,16 @@ class Home extends StatelessWidget {
           Center(child: Text("Home")),
           ElevatedButton(
             onPressed: () {
-              GoRouter.of(context).push(Uri(path: "/bout").toString());
+              GoRouter.of(context).push(Uri(path: "/about").toString());
             },
             child: Text("Go to About"),
           ),
           ElevatedButton(
             onPressed: () {
-              GoRouter.of(
-                context,
-              ).pushNamed(MyAppRouterContants.profileRouteName);
+              GoRouter.of(context).pushNamed(
+                MyAppRouterContants.profileRouteName,
+                pathParameters: {'username': 'Sumeet Wajpe', 'userid': 'sw101'},
+              );
             },
             child: Text("Go to Profile"),
           ),
