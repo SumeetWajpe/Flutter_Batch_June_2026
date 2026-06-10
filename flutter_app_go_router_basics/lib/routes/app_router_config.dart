@@ -1,12 +1,13 @@
 import 'package:flutter_app_go_router_basics/pages/about.dart';
 import 'package:flutter_app_go_router_basics/pages/contactus.dart';
 import 'package:flutter_app_go_router_basics/pages/home.dart';
+import 'package:flutter_app_go_router_basics/pages/login.dart';
 import 'package:flutter_app_go_router_basics/pages/profile.dart';
 import 'package:flutter_app_go_router_basics/routes/app_router_constants.dart';
 import 'package:go_router/go_router.dart';
 
 class MyAppRouter {
-  static GoRouter returnRouter() {
+  static GoRouter returnRouter(bool isAuth) {
     GoRouter router = GoRouter(
       routes: [
         GoRoute(
@@ -40,7 +41,24 @@ class MyAppRouter {
             return ContactUs();
           },
         ),
+         GoRoute(
+          path: "/login",
+          name: MyAppRouterContants.loginRouteName,
+          builder: (context, state) {
+            return Login();
+          },
+        ),
       ],
+      redirect: (context, state) {
+        if (!isAuth &&
+            state.matchedLocation.startsWith(
+              '/${MyAppRouterContants.profileRouteName}',
+            )) {
+          return context.namedLocation(MyAppRouterContants.loginRouteName);
+        } else {
+          return null;
+        }
+      },
     );
     return router;
   }
