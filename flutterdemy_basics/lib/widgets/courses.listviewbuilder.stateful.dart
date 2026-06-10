@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 // import 'package:flutterdemy_basics/models/course.model.dart';
 import 'package:flutterdemy_basics/models/courselist.changenotifier.model.dart';
+import 'package:flutterdemy_basics/screens/course.details.dart';
 import 'package:provider/provider.dart';
 
 class CoursesListViewBuilderStateful extends StatefulWidget {
@@ -32,23 +33,33 @@ class _CoursesListViewBuilderStatefulState
         padding: EdgeInsets.all(10),
         itemCount: courselistChangeNotifierInstance.listofcourses.length,
         itemBuilder: (context, index) {
+          final course = courselistChangeNotifierInstance.listofcourses[index];
           return GestureDetector(
             onHorizontalDragEnd: (_) {
               // deleteACourse(index);
-                    courselistChangeNotifierInstance.deleteACourse(index);
-
+              courselistChangeNotifierInstance.deleteACourse(index);
             },
             child: Card(
               elevation: 15,
               margin: EdgeInsets.only(bottom: 10),
               child: ListTile(
-                leading: Image(
-                  image: NetworkImage(
-                    courselistChangeNotifierInstance
-                        .listofcourses[index]
-                        .imageUrl!,
+                leading: GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => CourseDetails(course),
+                      ),
+                    );
+                  },
+                  child: Image(
+                    image: NetworkImage(
+                      courselistChangeNotifierInstance
+                          .listofcourses[index]
+                          .imageUrl!,
+                    ),
+                    width: 100,
                   ),
-                  width: 100,
                 ),
                 title: Text(
                   courselistChangeNotifierInstance.listofcourses[index].title!,

@@ -58,6 +58,7 @@ class _CourseDetailsState extends State<CourseDetails> {
                         ),
                         onTap: () {
                           // change the likes
+                          
                         },
                       ),
 
