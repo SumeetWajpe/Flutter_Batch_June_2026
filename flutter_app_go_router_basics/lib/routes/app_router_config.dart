@@ -1,5 +1,6 @@
 import 'package:flutter_app_go_router_basics/pages/about.dart';
 import 'package:flutter_app_go_router_basics/pages/contactus.dart';
+import 'package:flutter_app_go_router_basics/pages/error.dart';
 import 'package:flutter_app_go_router_basics/pages/home.dart';
 import 'package:flutter_app_go_router_basics/pages/login.dart';
 import 'package:flutter_app_go_router_basics/pages/profile.dart';
@@ -41,7 +42,7 @@ class MyAppRouter {
             return ContactUs();
           },
         ),
-         GoRoute(
+        GoRoute(
           path: "/login",
           name: MyAppRouterContants.loginRouteName,
           builder: (context, state) {
@@ -49,6 +50,8 @@ class MyAppRouter {
           },
         ),
       ],
+      errorBuilder: (context, state) =>
+          ErrorPage(errorMsg: state.error!.message),
       redirect: (context, state) {
         if (!isAuth &&
             state.matchedLocation.startsWith(

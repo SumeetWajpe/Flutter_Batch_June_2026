@@ -22,8 +22,7 @@ class Home extends StatelessWidget {
             onPressed: () {
               GoRouter.of(context).pushNamed(
                 MyAppRouterContants.profileRouteName,
-                pathParameters: {'username': 'Sumeet Wajpe',
-                 'userid': 'sw101'},
+                pathParameters: {'username': 'Sumeet Wajpe', 'userid': 'sw101'},
               );
             },
             child: Text("Go to Profile"),
