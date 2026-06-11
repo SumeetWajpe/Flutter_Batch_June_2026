@@ -16,7 +16,11 @@ void main() {
   runApp(
     ChangeNotifierProvider(
       create: (_) => CourseListNotifier(),
-      child: MaterialApp(title: 'Flutter Demy', home: FlutterdemyApp()),
+      child: MaterialApp(
+        title: 'Flutter Demy',
+        home: FlutterdemyApp(),
+        debugShowCheckedModeBanner: false,
+      ),
     ),
   );
 }
