@@ -196,6 +196,12 @@ class _AddNewCourseState extends State<AddNewCourse> {
       context,
       listen: false,
     ).addNewCourse(newCourse);
+
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(content: Text('Course added successfully !')),
+    );
+
+    Navigator.pop(context);
   }
 
   @override
