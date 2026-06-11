@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutterdemy_basics/models/course.model.dart';
 
 class AddNewCourse extends StatefulWidget {
   const AddNewCourse({super.key});
@@ -20,6 +21,16 @@ class _AddNewCourseState extends State<AddNewCourse> {
         border: OutlineInputBorder(),
       ),
       keyboardType: TextInputType.number,
+      validator: (value) {
+        if (value == null || value.isEmpty) {
+          return "Please enter a value";
+        } else {
+          return null;
+        }
+      },
+      onSaved: (newValue) {
+        _id = int.parse(newValue!);
+      },
     );
   }
 
@@ -30,7 +41,32 @@ class _AddNewCourseState extends State<AddNewCourse> {
         border: OutlineInputBorder(),
       ),
       keyboardType: TextInputType.text,
+      onSaved: (newValue) {
+        _title = newValue;
+      },
     );
+  }
+
+  _saveCourse() {
+    if (!_formKey.currentState!.validate()) {
+      return;
+    }
+    _formKey.currentState!.save();
+    final newCourse = CourseModel(
+      _id,
+      _title,
+      "",
+      0,
+      "",
+      "",
+      0,
+      DateTime.now().subtract(const Duration(days: 20)),
+      "",
+      [""],
+      "",
+    );
+
+    print(newCourse.title);
   }
 
   @override
@@ -46,11 +82,24 @@ class _AddNewCourseState extends State<AddNewCourse> {
       ),
       body: SingleChildScrollView(
         child: Form(
+          key: _formKey,
           child: Column(
             children: [
+              const SizedBox(height: 16),
+
               _buildIdField(),
               const SizedBox(height: 16),
+
               _buildTitleField(),
+              const SizedBox(height: 16),
+
+              SizedBox(
+                width: double.infinity,
+                child: ElevatedButton(
+                  child: const Text("Save Course"),
+                  onPressed: _saveCourse,
+                ),
+              ),
             ],
           ),
         ),
