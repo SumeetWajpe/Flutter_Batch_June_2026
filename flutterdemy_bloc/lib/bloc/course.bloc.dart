@@ -86,7 +86,9 @@ class CourseBloc extends Bloc<CourseEvent, CourseState> {
             ),
           ],
         ),
-      );
+      ) {
+    on<DeleteCourseEvent>(_deleteCourse);
+  }
 
   // Handlers
 
@@ -101,6 +103,9 @@ class CourseBloc extends Bloc<CourseEvent, CourseState> {
         .where((course) => course.id != event.courseId)
         .toList();
 
+    // print('Deleting');
+
     // emit
+    emit(CourseState(courses: updatedCourses));
   }
 }
