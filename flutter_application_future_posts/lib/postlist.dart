@@ -12,27 +12,56 @@ class PostListScreen extends StatefulWidget {
 }
 
 class _PostListScreenState extends State<PostListScreen> {
+  late Future<List<PostModel>> _postsFuture;
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    fetchPosts();
+    _postsFuture = fetchPosts();
   }
 
-  void fetchPosts() async {
+  Future<List<PostModel>> fetchPosts() async {
     final url = Uri.parse("https://jsonplaceholder.typicode.com/posts");
     final response = await http.get(url);
     // print(response.statusCode);
 
     if (response.statusCode == 200) {
       final List<dynamic> jsonList = json.decode(response.body);
-      var posts = jsonList.map((json) => PostModel.fromJson(json)).toList();
-      print(posts.length);
+      return jsonList.map((json) => PostModel.fromJson(json)).toList();
+    } else {
+      throw Exception("Failed to load Posts !");
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    return Center(child: Text("All Posts"));
+    return FutureBuilder(
+      future: _postsFuture,
+      builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return const Center(child: CircularProgressIndicator());
+        } else if (snapshot.hasError) {
+          return Center(child: Text('Error : ${snapshot.error}'));
+        } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
+          return const Center(child: Text('No posts found !'));
+        }
+        final posts = snapshot.data;
+        return ListView.builder(
+          itemCount: posts!.length,
+          itemBuilder: (context, index) {
+            final post = posts[index];
+            return ListTile(
+              leading: CircleAvatar(child: Text('${post.id}')),
+              title: Text(post.title),
+              subtitle: Text(
+                post.body,
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+              ),
+            );
+          },
+        );
+      },
+    );
   }
 }
