@@ -24,6 +24,21 @@ class CourseModel {
     this.subtitles,
     this.trainer,
   );
+  // Map<String, dynamic> toJson() {
+  //   return {
+  //     'id': id,
+  //     'title': title,
+  //     'subtitle': subtitle,
+  //     'likes': likes,
+  //     'imageUrl': imageUrl,
+  //     'description': description,
+  //     'rating': rating,
+  //     'lastUpdated': lastUpdated?.toIso8601String(),
+  //     'language': language,
+  //     'subtitles': subtitles,
+  //     'trainer': trainer,
+  //   };
+  // }
 }
 
 
