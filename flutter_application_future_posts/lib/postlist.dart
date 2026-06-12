@@ -12,6 +12,13 @@ class PostListScreen extends StatefulWidget {
 }
 
 class _PostListScreenState extends State<PostListScreen> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    fetchPosts();
+  }
+
   void fetchPosts() async {
     final url = Uri.parse("https://jsonplaceholder.typicode.com/posts");
     final response = await http.get(url);
@@ -26,13 +33,6 @@ class _PostListScreenState extends State<PostListScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: ElevatedButton(
-        onPressed: () {
-          fetchPosts();
-        },
-        child: Text("Fetch Posts !"),
-      ),
-    );
+    return Center(child: Text("All Posts"));
   }
 }

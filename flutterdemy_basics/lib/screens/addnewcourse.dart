@@ -192,10 +192,12 @@ class _AddNewCourseState extends State<AddNewCourse> {
     );
     // print(newCourse.title);
 
-    Provider.of<CourseListNotifier>(
-      context,
-      listen: false,
-    ).addNewCourse(newCourse);
+    // Provider.of<CourseListNotifier>(
+    //   context,
+    //   listen: false,
+    // ).addNewCourse(newCourse);
+
+    context.read<CourseListNotifier>().addNewCourse(newCourse); // newer way
 
     ScaffoldMessenger.of(context).showSnackBar(
       const SnackBar(content: Text('Course added successfully !')),
