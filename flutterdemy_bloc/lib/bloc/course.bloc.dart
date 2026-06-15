@@ -111,6 +111,13 @@ class CourseBloc extends Bloc<CourseEvent, CourseState> {
 
   void _addCourse(AddCourseEvent event, Emitter<CourseState> emit) {
     // immutability
+    // final updatedCourses = List<CourseModel>.from(state.courses);
+    // updatedCourses.add(event.course);
+
+    // OR
+    final updatedCourses = List<CourseModel>.from(state.courses)
+      ..add(event.course);
+    emit(CourseState(courses: updatedCourses));
   }
 
   void _deleteCourse(DeleteCourseEvent event, Emitter<CourseState> emit) {

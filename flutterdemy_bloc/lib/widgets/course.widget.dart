@@ -25,15 +25,31 @@ class CourseWidget extends StatelessWidget {
           course.subtitle!,
           style: const TextStyle(fontSize: 15, color: Colors.grey),
         ),
-        trailing: InkWell(
-          child: const Icon(
-            Icons.delete,
-            color: Color.fromARGB(255, 237, 79, 68),
-          ),
-          onTap: () {
-            context.read<CourseBloc>().add(DeleteCourseEvent(course.id));
-          },
+        trailing: Column(
+          children: [
+            InkWell(
+              child: const Icon(
+                Icons.thumb_up_alt_outlined,
+                size: 25,
+                color: Color.fromARGB(255, 80, 169, 241),
+              ),
+              onTap: () {
+                //?
+                context.read<CourseBloc>().add(IncrementLikesEvent(course.id));
+              },
+            ),
+            Text(course.likes.toString(), style: TextStyle(fontSize: 15)),
+          ],
         ),
+        // trailing: InkWell(
+        //   child: const Icon(
+        //     Icons.delete,
+        //     color: Color.fromARGB(255, 237, 79, 68),
+        //   ),
+        //   onTap: () {
+        //     context.read<CourseBloc>().add(DeleteCourseEvent(course.id));
+        //   },
+        // ),
       ),
     );
   }
