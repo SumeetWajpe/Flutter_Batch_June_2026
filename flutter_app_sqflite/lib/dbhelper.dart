@@ -1,3 +1,4 @@
+import 'package:flutter_app_sqflite/model.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 
@@ -29,5 +30,10 @@ CREATE TABLE tasks(
         createdAt TEXT NOT NULL
       )
 ''');
+  }
+
+  inserttask(Task task) async {
+    Database db = await instance.database;
+    db.insert('tasks', task.toMap());
   }
 }

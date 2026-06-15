@@ -13,7 +13,7 @@ class Task {
   });
 
   // fromMap (create a factory Constructor -> Create Task from map (from db))
-   factory Task.fromMap(Map<String, dynamic> map) {
+  factory Task.fromMap(Map<String, dynamic> map) {
     return Task(
       id: map['id'],
       title: map['title'],
@@ -21,5 +21,15 @@ class Task {
       isCompleted: map['isCompleted'] == 1,
       createdAt: DateTime.parse(map['createdAt']),
     );
+  }
+
+  Map<String, dynamic> toMap() {
+    return {
+      'id': id,
+      'title': title,
+      'description': description,
+      'isCompleted': isCompleted ? 1 : 0,
+      'createdAt': createdAt.toIso8601String(),
+    };
   }
 }
