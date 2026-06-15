@@ -24,6 +24,34 @@ class CourseModel {
     this.subtitles,
     this.trainer,
   );
+
+  CourseModel copyWith({
+    int? id,
+    String? title,
+    String? subtitle,
+    int? likes,
+    String? imageUrl,
+    String? description,
+    int? rating,
+    DateTime? lastUpdated,
+    String? language,
+    List<String>? subtitles,
+    String? trainer,
+  }) {
+    return CourseModel(
+      id ?? this.id,
+      title ?? this.title,
+      subtitle ?? this.subtitle,
+      likes ?? this.likes,
+      imageUrl ?? this.imageUrl,
+      description ?? this.description,
+      rating ?? this.rating,
+      lastUpdated ?? this.lastUpdated,
+      language ?? this.language,
+      subtitles ?? this.subtitles,
+      trainer ?? this.trainer,
+    );
+  }
 }
 
 

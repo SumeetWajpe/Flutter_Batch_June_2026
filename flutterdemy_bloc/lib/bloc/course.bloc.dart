@@ -88,15 +88,30 @@ class CourseBloc extends Bloc<CourseEvent, CourseState> {
         ),
       ) {
     on<DeleteCourseEvent>(_deleteCourse);
+    on<IncrementLikesEvent>(_incrementlikes);
+    on<AddCourseEvent>(_addCourse);
   }
 
   // Handlers
 
   void _incrementlikes(IncrementLikesEvent event, Emitter<CourseState> emit) {
     // logic to increment likes
+    final updatedCourses = state.courses.map((course) {
+      if (course.id == event.courseId) {
+        // course.likes++; // Mutating the original object (Not recommended)
+        // NEW IMMUTABLITY APPROACH
+        return course.copyWith(likes: course.likes! + 1);
+      }
+      return course;
+    }).toList();
+
+    // emit
+    emit(CourseState(courses: updatedCourses));
   }
 
-  void _addCourse(AddCourseEvent event, Emitter<CourseState> emit) {}
+  void _addCourse(AddCourseEvent event, Emitter<CourseState> emit) {
+    // immutability
+  }
 
   void _deleteCourse(DeleteCourseEvent event, Emitter<CourseState> emit) {
     final updatedCourses = state.courses
