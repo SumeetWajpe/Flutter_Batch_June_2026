@@ -32,11 +32,13 @@ CREATE TABLE tasks(
 ''');
   }
 
+  // Insert new task
   Future<int> insertTask(Task task) async {
     Database db = await instance.database;
     return await db.insert('tasks', task.toMap());
   }
 
+  // Get All Tasks
   Future<List<Task>> getAllTasks() async {
     Database db = await instance.database;
     List<Map<String, dynamic>> maps = await db.query('tasks');
@@ -45,9 +47,19 @@ CREATE TABLE tasks(
     });
   }
 
-   // DELETE - Delete a task
+  // DELETE - Delete a task
   Future<int> deleteTask(int id) async {
     Database db = await instance.database;
     return await db.delete('tasks', where: 'id = ?', whereArgs: [id]);
+  }
+  // UPDATE - Update a task
+  Future<int> updateTask(Task task) async {
+    Database db = await instance.database;
+    return await db.update(
+      'tasks',
+      task.toMap(),
+      where: 'id = ?',
+      whereArgs: [task.id],
+    );
   }
 }

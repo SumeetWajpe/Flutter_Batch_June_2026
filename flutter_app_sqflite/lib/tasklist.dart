@@ -45,8 +45,20 @@ class _TaskListState extends State<TaskList> {
     _refreshTaskList();
   }
 
-  _deleteTask(int id) async {
+  void _deleteTask(int id) async {
     await dbHelper.deleteTask(id);
+    _refreshTaskList();
+  }
+
+  void _toggleTaskStatus(Task task) async {
+    Task updatedTask = Task(
+      id: task.id,
+      title: task.title,
+      description: task.description,
+      isCompleted: !task.isCompleted,
+      createdAt: task.createdAt,
+    );
+    await dbHelper.updateTask(updatedTask);
     _refreshTaskList();
   }
 
@@ -107,7 +119,9 @@ class _TaskListState extends State<TaskList> {
                               : Icons.check_box_outline_blank,
                           semanticLabel: "Toggle task ${task.title}",
                         ),
-                        onPressed: () {},
+                        onPressed: () {
+                          _toggleTaskStatus(task);
+                        },
                       ),
                       IconButton(
                         icon: Icon(
