@@ -16,6 +16,41 @@ class _TaskListState extends State<TaskList> {
   List<Task> tasks = [];
 
   @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _refreshTaskList();
+  }
+
+  void _refreshTaskList() async {
+    List<Task> taskslist = await dbHelper.getAllTasks();
+    setState(() {
+      tasks = taskslist;
+    });
+  }
+
+  void _addTask() async {
+    // insert task in DB
+    // update the state
+    if (titleController.text.isEmpty) return;
+    await dbHelper.insertTask(
+      Task(
+        title: titleController.text,
+        description: descriptionController.text,
+        createdAt: DateTime.now(),
+      ),
+    );
+    titleController.clear();
+    descriptionController.clear();
+    _refreshTaskList();
+  }
+
+  _deleteTask(int id) async {
+    await dbHelper.deleteTask(id);
+    _refreshTaskList();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text('SQLite Task Manager')),
@@ -79,8 +114,8 @@ class _TaskListState extends State<TaskList> {
                           Icons.delete,
                           semanticLabel: "Delete Task ${task.title}",
                         ),
-                        onPressed: (){
-                          
+                        onPressed: () {
+                          _deleteTask(task.id!);
                         },
                       ),
                     ],

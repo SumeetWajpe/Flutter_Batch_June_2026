@@ -32,8 +32,22 @@ CREATE TABLE tasks(
 ''');
   }
 
-  inserttask(Task task) async {
+  Future<int> insertTask(Task task) async {
     Database db = await instance.database;
-    db.insert('tasks', task.toMap());
+    return await db.insert('tasks', task.toMap());
+  }
+
+  Future<List<Task>> getAllTasks() async {
+    Database db = await instance.database;
+    List<Map<String, dynamic>> maps = await db.query('tasks');
+    return List.generate(maps.length, (i) {
+      return Task.fromMap(maps[i]);
+    });
+  }
+
+   // DELETE - Delete a task
+  Future<int> deleteTask(int id) async {
+    Database db = await instance.database;
+    return await db.delete('tasks', where: 'id = ?', whereArgs: [id]);
   }
 }
