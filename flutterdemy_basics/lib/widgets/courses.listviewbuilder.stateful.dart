@@ -75,9 +75,12 @@ class _CoursesListViewBuilderStatefulState
                   style: const TextStyle(fontSize: 15, color: Colors.grey),
                 ),
                 trailing: InkWell(
-                  child: const Icon(
-                    Icons.delete,
-                    color: Color.fromARGB(255, 237, 79, 68),
+                  child: Semantics(
+                    label: "Delete Course",
+                    child: const Icon(
+                      Icons.delete,
+                      color: Color.fromARGB(255, 237, 79, 68),
+                    ),
                   ),
                   onTap: () {
                     // ??

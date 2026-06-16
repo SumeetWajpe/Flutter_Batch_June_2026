@@ -33,6 +33,7 @@ class FlutterdemyApp extends StatelessWidget {
         ],
       ),
       floatingActionButton: FloatingActionButton(
+        tooltip: "Create a new course",
         onPressed: () {
           Navigator.push(
             context,

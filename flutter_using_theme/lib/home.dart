@@ -16,10 +16,12 @@ class Home extends StatelessWidget {
       body: Center(
         child: Container(
           padding: EdgeInsets.all(15),
-          color: Theme.of(context).colorScheme.primaryContainer,
+          // color: Theme.of(context).colorScheme.primaryContainer,
+          color: const Color.fromARGB(255, 200, 249, 249),
           child: Text(
             "Styled with Theme !",
-            style: Theme.of(context).textTheme.displayLarge,
+            // style: Theme.of(context).textTheme.displayLarge,
+            style: TextStyle(color: Colors.white),
           ),
         ),
       ),
