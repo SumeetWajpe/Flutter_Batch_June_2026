@@ -38,6 +38,6 @@ void main() {
     // Act
     await tester.pumpWidget(createWidget());
     //Assert
-    expect(find.text('Angular'), findsOneWidget);
+    expect(find.text('React'), findsOneWidget);
   });
 }
