@@ -40,4 +40,10 @@ void main() {
     //Assert
     expect(find.text('React'), findsOneWidget);
   });
+  testWidgets('show likes button (icon)', (tester) async {
+    // Act
+    await tester.pumpWidget(createWidget());
+    //Assert
+    expect(find.byIcon(Icons.thumb_up_alt_outlined), findsOneWidget);
+  });
 }
