@@ -47,5 +47,16 @@ void main() {
         expect(bloc.state.courses.length, 5);
       },
     );
+   blocTest(
+      'IncrementLikesEvent increments the likes',
+      build: () => CourseBloc(),
+      act: (bloc) {
+        bloc.add(IncrementLikesEvent(1));
+      },
+      verify: (bloc) {
+        final course = bloc.state.courses.firstWhere((c) => c.id == 1);
+        expect(course.likes, 101);
+      },
+    );
   });
 }
