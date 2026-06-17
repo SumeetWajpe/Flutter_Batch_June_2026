@@ -13,7 +13,6 @@ class CourseWidget extends StatelessWidget {
       elevation: 15,
       margin: EdgeInsets.only(bottom: 10),
       child: ListTile(
-        leading: Image(image: NetworkImage(course.imageUrl!), width: 100),
         title: Text(
           course.title!,
           style: const TextStyle(
